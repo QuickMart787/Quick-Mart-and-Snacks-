@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment</title>
+	<style>
+        .container {
+            max-width: 1200px;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('images/paymentbg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+  
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #fafafa;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .success {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Payment Details</h1>
+<style>  
+h1 {
+  text-align: center;
+  color: white;
+}
+</style>
+  <form onsubmit="handlePayment(event)">
+    <input type="text" placeholder="Name on Card" required />
+    <input type="text" placeholder="Card Number" pattern="\d{16}" title="Enter 16-digit card number" required />
+    <input type="text" placeholder="Expiry (MM/YY)" pattern="\d{2}/\d{2}" title="Enter format MM/YY" required />
+    <input type="text" placeholder="CVV" pattern="\d{3}" title="Enter 3-digit CVV" required />
+    <button type="submit">Pay Now</button>
+  </form>
+  <div class="success" id="success-msg"></div>
+
+  <script>
+    function handlePayment(e) {
+      e.preventDefault();
+      alert("✅ Payment Successful! Thank you for your order.");  // Popup alert
+      document.getElementById('success-msg').textContent = "✅ Payment Successful! Thank you for your order.";
+      localStorage.removeItem('cart'); // clear cart after payment
+    }
+  </script>
+</body>
+</html>

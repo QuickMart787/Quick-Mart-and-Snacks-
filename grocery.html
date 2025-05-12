@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery - Quick Mart And Snacks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+        .container {
+            max-width: 1200px;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('images/grocerybg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+
+</head>
+<body class="bg-white">
+    <main>
+        <nav class="bg-green-600 text-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="index.html">
+                    <h1 class="text-2xl font-bold text-left">Quick Mart And Snacks</h1>
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="hover:underline">Home</a>
+                    <a href="grocery.html" class="hover:underline">Grocery</a>
+                    <a href="food.html" class="hover:underline">Food</a>
+                    <a href="beverages.html" class="hover:underline">Beverages</a>
+                    <a href="snacks.html" class="hover:underline">Snacks</a>
+		    <a href="cart.html" class="hover:underline">Cart</a>
+                    <a href="checkout.html" class="hover:underline">Checkout</a>
+                    <div class="relative">
+                        <svg id="cart-icon" class="w-6 h-6 text-black-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full px-2">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Grocery Section -->
+        <section class="container mx-auto py-10">
+            <h2 class="text-3xl font-bold mb-6 text-center text-green-600">Grocery and Essentials</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+                
+		<!-- Item 1 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/amulmilk.jpg" alt="Amul Milk" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Amul Milk</h3>
+    <p class="text-gray-600">₹30</p>
+    <button onclick="addToCart('Amul Milk', 30)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+                <!-- Item 2 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/amulgoldmilk.jpg" alt="Amul Gold Milk" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Amul Gold Milk</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('Amul Gold Milk', 40)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+                <!-- Item 3 -->
+		<div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/amulbutter.jpg" alt="Amul Butter" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Amul Butter</h3>
+    <p class="text-gray-600">₹60</p>
+    <button onclick="addToCart('Amul Butter', 60)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 4 -->
+		<div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/packofwhiteeggs.jpg" alt="Pack Of White Eggs" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Pack Of White Eggs</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('Pack Of White Eggs', 40)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 5 -->
+               <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/packofbrowneggs.jpg" alt="Pack Of Brown Eggs" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Pack Of Brown Eggs</h3>
+    <p class="text-gray-600">₹60</p>
+    <button onclick="addToCart('Pack Of Brown Eggs', 60)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 6 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/fortunecookingoil.jpg" alt="Fortune Cooking Oil" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Fortune Cooking Oil</h3>
+    <p class="text-gray-600">₹50</p>
+    <button onclick="addToCart('Fortune Cooking Oil', 50)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 7 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/everesttikhalal.jpg" alt="Everest Tikhalal" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Everest Tikhalal</h3>
+    <p class="text-gray-600">₹50</p>
+    <button onclick="addToCart('Everest Tikhalal', 50)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 8 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/fortunesugar.jpg" alt="Fortune Sugar" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Fortune Sugar</h3>
+    <p class="text-gray-600">₹60</p>
+    <button onclick="addToCart('Fortune Sugar', 60)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 9 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/tatasalt.jpg" alt="Tata Salt" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Tata Salt</h3>
+    <p class="text-gray-600">₹60</p>
+    <button onclick="addToCart('Tata Salt', 60)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 10 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/gocheesepizzablock.jpg" alt="Go Cheese Pizza Block" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Go Cheese Pizza Block</h3>
+    <p class="text-gray-600">₹140</p>
+    <button onclick="addToCart('Go Cheese Pizza Block', 140)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 11 -->
+               <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/sensodynetoothpaste.jpg" alt="Sensodyne Toothpaste" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Sensodyne Toothpaste</h3>
+    <p class="text-gray-600">₹90</p>
+    <button onclick="addToCart('Sensodyne Toothpaste', 90)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 12 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/colgatevisiblewhite.jpg" alt="Colgate Visible White" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Colgate Visible White</h3>
+    <p class="text-gray-600">₹80</p>
+    <button onclick="addToCart('Colgate Visible White', 80)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 13 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/indiagateminimogra.jpg" alt="India Gate Mini Mogra" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">India Gate Mini Mogra</h3>
+    <p class="text-gray-600">₹170</p>
+    <button onclick="addToCart('India Gate Mini Mogra', 170)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 14 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/freshcarrot.jpg" alt="Fresh Carrot" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Fresh Carrot</h3>
+    <p class="text-gray-600">₹30</p>
+    <button onclick="addToCart('Fresh Carrot', 30)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 15 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/freshlettuce.jpg" alt="Fresh Lettuce" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Fresh Lettuce</h3>
+    <p class="text-gray-600">₹20</p>
+    <button onclick="addToCart('Fresh Lettuce', 20)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 16 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/freshpotato.jpg" alt="Fresh Potato" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Fresh Potato</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('Fresh Potato', 40)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 17 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/freshtomato.jpg" alt="Fresh Tomato" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Fresh Tomato</h3>
+    <p class="text-gray-600">₹20</p>
+    <button onclick="addToCart('Fresh Tomato', 20)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 18 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/greenchilli.jpg" alt="Green Chilli" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Green Chilli</h3>
+    <p class="text-gray-600">₹20</p>
+    <button onclick="addToCart('Green Chilli', 20)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 19 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/amulpaneer.jpg" alt="Amul Paneer" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Amul Paneer</h3>
+    <p class="text-gray-600">₹80</p>
+    <button onclick="addToCart('Amul Paneer', 80)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 20 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/grocery/amulcheesecube.jpg" alt="Amul Cheese Cube" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-green-600">Amul Cheese Cube</h3>
+    <p class="text-gray-600">₹180</p>
+    <button onclick="addToCart('Amul Cheese Cube', 180)" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+		</div>
+
+            </div>
+        </section>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded shadow w-full max-w-md">
+                <h3 class="text-2xl font-bold mb-6 text-center text-blue-600">Your Cart</h3>
+                <div id="cart-items" class="space-y-4"></div>
+                <button onclick="checkout()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded w-full">Checkout</button>
+                <button onclick="closeCart()" class="mt-2 bg-gray-600 text-white px-4 py-2 rounded w-full">Close</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>© 2025 Quick Mart And Snacks. All rights reserved.</p>
+    </footer>
+
+    <script src="cart.js"></script>
+</body>
+</html>

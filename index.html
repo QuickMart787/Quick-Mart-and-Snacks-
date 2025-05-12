@@ -1,0 +1,177 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Mart And Snacks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .container {
+            max-width: 1200px;
+        }
+        /* Sticky Footer Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Mart And Snacks</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white">
+    <main>
+        <nav class="bg-500 text-white text-center py-20">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-left">Quick Mart And Snacks</h1>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="hover:underline">Home</a>
+                    <a href="grocery.html" class="hover:underline">Grocery</a>
+                    <a href="food.html" class="hover:underline">Food</a>
+                    <a href="beverages.html" class="hover:underline">Beverages</a>
+                    <a href="snacks.html" class="hover:underline">Snacks</a>
+                    <div class="relative">
+                        <svg id="cart-icon" class="w-6 h-6 text-green-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full px-2">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="bg-500 text-white text-center py-20">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold mb-4">Welcome to Quick Mart And Snacks</h2>
+                <p class="text-lg">Your one-stop shop for Indian groceries, food, beverages, and snacks!</p>
+            </div>
+        </section>
+
+        <section class="container mx-auto py-10">
+            <h3 class="text-2xl font-bold mb-6 text-center text-green-600">Explore Our Categories</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <a href="grocery.html" class="bg p-6 rounded shadow cursor-pointer text-center">
+                    <svg class="w-12 h-12 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <h4 class="text-lg font-semibold text-green-600 mt-2">Grocery</h4>
+                </a>
+                <a href="food.html" class="bg p-6 rounded shadow cursor-pointer text-center">
+                    <svg class="w-12 h-12 mx-auto text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <h4 class="text-lg font-semibold text-blue-600 mt-2">Food</h4>
+                </a>
+                <a href="beverages.html" class="bg p-6 rounded shadow cursor-pointer text-center">
+                    <svg class="w-12 h-12 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <h4 class="text-lg font-semibold text-red-600 mt-2">Beverages</h4>
+                </a>
+                <a href="snacks.html" class="bg p-6 rounded shadow cursor-pointer text-center">
+                    <svg class="w-12 h-12 mx-auto text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <h4 class="text-lg font-semibold text-orange-600 mt-2">Snacks</h4>
+                </a>
+            </div>
+        </section>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded shadow w-full max-w-md">
+                <h3 class="text-2xl font-bold mb-6 text-center text-blue-600">Your Cart</h3>
+                <div id="cart-items" class="space-y-4"></div>
+                <button onclick="checkout()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded w-full">Checkout</button>
+                <button onclick="closeCart()" class="mt-2 bg-gray-600 text-white px-4 py-2 rounded w-full">Close</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>© 2025 Quick Mart And Snacks. All rights reserved.</p>
+    </footer>
+
+    <script src="cart.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93d24f53de426766',t:'MTc0NjgwNTM3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+  // Redirect to auth.html if not logged in
+  window.onload = function () {
+    const user = localStorage.getItem('user');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (!user && currentPage === 'index.html') {
+      window.location.href = 'auth.html';
+    }
+  };
+</script>
+<script>
+  // Redirect to auth.html if not logged in
+  window.onload = function () {
+    const user = localStorage.getItem('user');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (!user && currentPage === 'index.html') {
+      window.location.href = 'auth.html';
+    }
+  };
+</script>
+</body>
+</html>

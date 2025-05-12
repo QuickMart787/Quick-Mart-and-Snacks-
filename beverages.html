@@ -1,0 +1,244 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beverages - Quick Mart And Snacks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+        .container {
+            max-width: 1200px;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background-image: url('images/beveragesbg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+
+</head>
+<body class="bg-white">
+    <main>
+        <nav class="bg-red-600 text-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="index.html">
+                    <h1 class="text-2xl font-bold text-left">Quick Mart And Snacks</h1>
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="hover:underline">Home</a>
+                    <a href="grocery.html" class="hover:underline">Grocery</a>
+                    <a href="food.html" class="hover:underline">Food</a>
+                    <a href="beverages.html" class="hover:underline">Beverages</a>
+                    <a href="snacks.html" class="hover:underline">Snacks</a>
+                    <a href="cart.html" class="hover:underline">Cart</a>
+                    <a href="checkout.html" class="hover:underline">Checkout</a>
+                    <div class="relative">
+                        <svg id="cart-icon" class="w-6 h-6 text-green-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full px-2">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Beverages Section -->
+        <section class="container mx-auto py-10">
+            <h2 class="text-3xl font-bold mb-6 text-center text-red-600">Beverages</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
+               
+		<!-- Item 1 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/amullassi.jpg" alt="Amul Lassi" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Amul Lassi</h3>
+    <p class="text-gray-600">₹20</p>
+    <button onclick="addToCart('Amul Lassi', 20)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+                <!-- Item 2 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/appyfizz.jpg" alt="Appy Fizz" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Appy Fizz</h3>
+    <p class="text-gray-600">₹20</p>
+    <button onclick="addToCart('Appy Fizz', 20)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+                <!-- Item 3 -->
+		<div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/cocacola.jpg" alt="Coca Cola" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Coca Cola</h3>
+    <p class="text-gray-600">₹50</p>
+    <button onclick="addToCart('Coca Cola', 50)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 4 -->
+		<div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/darkfanatsychocolatemilkshake.jpg" alt="Dark Fanatsy Chocolate Milkshake" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Dark Fanatsy Chocolate Milkshake</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('Dark Fanatsy Chocolate Milkshake', 40)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 5 -->
+               <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/dietcoke.jpg" alt="Diet Coke" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Diet Coke</h3>
+    <p class="text-gray-600">₹30</p>
+    <button onclick="addToCart('Diet Coke', 30)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 6 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/fanta.jpg" alt="Fanta" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Fanta</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('Fanta', 40)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 7 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/mirinda.jpg" alt="Mirinda" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Mirinda</h3>
+    <p class="text-gray-600">₹50</p>
+    <button onclick="addToCart('Mirinda', 50)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 8 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/paperboatcoconutwater.jpg" alt="PaperBoat Coconut Water" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">PaperBoat Coconut Water</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('PaperBoat Coconut Water', 40)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 9 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/paperboatlychee.jpg" alt="PaperBoat Lychee" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">PaperBoat Lychee</h3>
+    <p class="text-gray-600">₹35</p>
+    <button onclick="addToCart('PaperBoat Lychee', 35)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 10 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/paperboatmango.jpg" alt="PaperBoat Mango" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">PaperBoat Mango</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('PaperBoat Mango', 40)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 11 -->
+               <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/paperboatmixedfruit.jpg" alt="PaperBoat Mixed Fruit" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">PaperBoat Mixed Fruit</h3>
+    <p class="text-gray-600">₹30</p>
+    <button onclick="addToCart('PaperBoat Mixed Fruit', 30)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 12 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/paperboatpomegranate.jpg" alt="PaperBoat Pomegranate" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">PaperBoat Pomegranate</h3>
+    <p class="text-gray-600">₹50</p>
+    <button onclick="addToCart('PaperBoat Pomegranate', 50)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 13 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/realfruitjuicecranberry.jpg" alt="Real Fruit Juice Cranberry" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Real Fruit Juice Cranberry</h3>
+    <p class="text-gray-600">₹110</p>
+    <button onclick="addToCart('Real Fruit Juice Cranberry', 110)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 14 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/realfruitjuicepomegranate.jpg" alt="Real Fruit Juice Pomegranate" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Real Fruit Juice Pomegranate</h3>
+    <p class="text-gray-600">₹130</p>
+    <button onclick="addToCart('Real Fruit Juice Pomegranate', 130)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 15 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/realfruitjuicepeach.jpg" alt="Real Fruit Juice Peach" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Real Fruit Juice Peach</h3>
+    <p class="text-gray-600">₹120</p>
+    <button onclick="addToCart('Real Fruit Juice Peach', 120)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 16 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/realfruitjuicegrape.jpg" alt="Real Fruit Juice Grape" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Real Fruit Juice Grape</h3>
+    <p class="text-gray-600">₹110</p>
+    <button onclick="addToCart('Real Fruit Juice Grape', 110)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 17 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/realfruitjuicemosambi.jpg" alt="Real Fruit Juice Mosambi" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Real Fruit Juice Mosambi</h3>
+    <p class="text-gray-600">₹120</p>
+    <button onclick="addToCart('Real Fruit Juice Mosambi', 120)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 18 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/realfruitjuiceorange.jpg" alt="Real Fruit Juice Orange" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Real Fruit Juice Orange</h3>
+    <p class="text-gray-600">₹120</p>
+    <button onclick="addToCart('Real Fruit Juice Orange', 120)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 19 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/thumpsup.jpg" alt="ThumpsUp" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">ThumpsUp</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('ThumpsUp', 40)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+
+               <!-- Item 20 -->
+                <div class="bg-white p-6 rounded shadow text-center">
+    <img src="images/product/beverages/sprite.jpg" alt="Sprite" class="w-full h-40 object-cover rounded-t-lg mb-4">
+    <h3 class="text-lg font-semibold text-red-600">Sprite</h3>
+    <p class="text-gray-600">₹40</p>
+    <button onclick="addToCart('Sprite', 40)" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Add to Cart</button>
+		</div>
+            </div>
+        </section>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded shadow w-full max-w-md">
+                <h3 class="text-2xl font-bold mb-6 text-center text-blue-600">Your Cart</h3>
+                <div id="cart-items" class="space-y-4"></div>
+                <button onclick="window.location.href='cart.html'" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded w-full">View Cart</button>
+                <button onclick="closeCart()" class="mt-2 bg-gray-600 text-white px-4 py-2 rounded w-full">Close</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>© 2025 Quick Mart And Snacks. All rights reserved.</p>
+    </footer>
+
+
+    <script src="cart.js"></script>
+</body>
+</html>
